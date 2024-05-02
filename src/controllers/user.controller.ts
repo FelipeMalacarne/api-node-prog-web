@@ -13,7 +13,7 @@ class UserController {
         try {
             const user = await this.service.createUser(req.body);
             res.status(201).json(user);
-        } catch (error) {
+        } catch (error: any) {
             res.status(400).json({ message: error.message });
         }
     }
