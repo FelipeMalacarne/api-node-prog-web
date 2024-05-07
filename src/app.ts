@@ -1,6 +1,7 @@
 import { Application } from "express";
 import express from "express";
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
 import userRoutes from "./routes/user.routes";
 
 const config = {
@@ -12,6 +13,8 @@ const app: Application = express();
 mongoose.connect(config.mongoURI)
     .then(() => console.log('Conectado ao banco de dados'))
     .catch(err => console.log(err));
+
+app.use(bodyParser.json());
 
 app.use('/users', userRoutes);
 
